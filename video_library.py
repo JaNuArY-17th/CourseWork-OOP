@@ -115,14 +115,16 @@ class VideoLibrary:
             f.write(f"{video}")
             f.close()
 
-    def delete_video_from_library(self, video):
-        if self.check_video(video) == 0:
+    def delete_video_from_library(self, key):
+        if self.get_info(key) == None:
             raise ValueError("Video not found")
         else:
+            video = self.get_info(key)
             self.__library = {key: value for key, value in self.__library.items() if value != video}
 
-            # with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'w') as f:
-            #     for key, value in self.__library.items():
-            #         f.write(f"{key},{value.name},{value.director},{value.rating},{value.play_count}\n")
+            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'w') as f:
+                for value in self.__library:
+                    f.write(f"{value}\n")
+                    f.close()
 
 lib = VideoLibrary("Library")

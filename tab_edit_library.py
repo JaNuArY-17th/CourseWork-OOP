@@ -75,7 +75,6 @@ class EditLibrary(Frame):
     def delete_video_clicked(self):
         selected_index = self.videos_list_txt.curselection()[0]
         video_str = self.videos_list_txt.get(selected_index)
-        current_video = video_str.split(",")
-        video = LibraryItem(str(current_video[0]), str(current_video[1]), int(current_video[2]), int(current_video[3]))
-        lib.delete_video_from_library(video)
+        current_video_key = video_str.split(" ")[0]
+        lib.delete_video_from_library(current_video_key)
         self.list_videos()
