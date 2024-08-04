@@ -220,7 +220,8 @@ class EditPlayVideosList(Frame):
                 msb.showerror("Error", "Playlist is empty")
             else:
                 for vid in self.__playlist:
-                    lib.increment_play_count(vid.split(" ")[0]) 
+                    lib.increment_play_count(vid.split(" ")[0])
+                msb.showinfo("Play", "Playlist play")
         
         except IndexError:
             msb.showerror("Error", "No playlist is selected")
