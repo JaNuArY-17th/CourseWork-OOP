@@ -106,25 +106,27 @@ class VideoLibrary:
         if self.check_video(video) == 1:
             raise ValueError("Video existed")
         else:
-            f = open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'r')
-            lines = f.readlines()
-            self.__library[str(len(lines)+1)] = video
-            
-            f = open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'a')
-            f.write("\n")
-            f.write(f"{video}")
-            f.close()
+            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'r') as f:
+                lines = f.readlines()
+                self.__library[str(len(lines)+1)] = video
+
+            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'a') as f:
+                f.write("\n")
+                f.write(f"{video}")
 
     def delete_video_from_library(self, key):
         if self.get_info(key) == None:
             raise ValueError("Video not found")
         else:
-            video = self.get_info(key)
-            self.__library = {key: value for key, value in self.__library.items() if value != video}
+            del self.__library[key]
 
             with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'w') as f:
-                for value in self.__library:
-                    f.write(f"{value}\n")
-                    f.close()
+                first, *_, last = self.__library.values()
+                for key, value in self.__library.items():
+                    if value != last:
+                        f.write(f"{value}\n")
+                    else:
+                        f.write(f"{value}")
+            
 
 lib = VideoLibrary("Library")
