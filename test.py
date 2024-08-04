@@ -5,3 +5,5 @@ original_dict = {key: value for key, value in original_dict.items()
                 if value != value_to_remove}
 
 print(original_dict)
+
+# Output: {'a': 1, 'c': 3}
