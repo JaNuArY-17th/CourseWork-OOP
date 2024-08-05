@@ -1,9 +1,10 @@
 class LibraryItem:
-    def __init__(self, name, director, rating, time):
+    def __init__(self, name, director, rating, time, image_path=None):
         self.name = name
         self.director = director
         self.rating = rating
         self.play_count = time
+        self.image_path = image_path
 
     @property
     def name(self):
@@ -38,6 +39,16 @@ class LibraryItem:
     @property
     def play_count(self):
         return self.__play_count
+    
+    @property
+    def image_path(self):
+        return self.__image_path
+    
+    @image_path.setter
+    def image_path(self, image_path):
+        if image_path == '':
+            raise ValueError('Image path can not be empty')
+        self.__image_path = image_path
     
     @play_count.setter
     def play_count(self, time):

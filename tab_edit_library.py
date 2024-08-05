@@ -1,12 +1,7 @@
 import tkinter as tk
 from tkinter import *
-from tkinter import ttk
-from library_item import LibraryItem
 from video_library import lib
-import font_manager as fonts
-import tkinter.scrolledtext as tkst
 from tkinter import messagebox as msb
-import os
 
 class EditLibrary(Frame):
     def __init__(self, master):
@@ -34,15 +29,21 @@ class EditLibrary(Frame):
         self.rating = tk.Entry(self, width=30)
         self.rating.grid(row=3, column=1, padx=10, pady=10)
 
+        lbl_image_path = tk.Label(self, text="Image Path: ")
+        lbl_image_path.grid(row=4, column=0, padx=10, pady=10)
+
+        self.image_path = tk.Entry(self, width=30)
+        self.image_path.grid(row=4, column=1, padx=10, pady=10)
+
         add_btn = tk.Button(self, text="Add Video", command=self.add_video_clicked)
-        add_btn.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
+        add_btn.grid(row=5, column=0, columnspan=2, padx=10, pady=10)
 
         self.videos_list_txt = Listbox(self, width=40, selectmode=SINGLE, exportselection=0)
-        self.videos_list_txt.grid(row=1, column=2, rowspan=3, padx=10, pady=10)
+        self.videos_list_txt.grid(row=1, column=2, rowspan=4, padx=10, pady=10)
         self.videos_list_txt.bind("<<ListboxSelect>>", self.__on_select)
 
         delete_btn = tk.Button(self, text="Delete Video", command=self.delete_video_clicked)
-        delete_btn.grid(row=4, column=2, columnspan=2, padx=10, pady=10)
+        delete_btn.grid(row=5, column=2, columnspan=2, padx=10, pady=10)
 
         self.list_videos()
     

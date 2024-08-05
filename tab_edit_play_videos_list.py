@@ -1,11 +1,8 @@
 import tkinter as tk
 from tkinter import *
-from tkinter import ttk
 from video_library import lib
-import font_manager as fonts
 import tkinter.scrolledtext as tkst
 from tkinter import messagebox as msb
-import os
 
 class EditPlayVideosList(Frame):
     def __init__(self, master):

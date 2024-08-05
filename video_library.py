@@ -9,7 +9,7 @@ class VideoLibrary:
         lines = f.readlines()
         for i in range(len(lines)):
             currentline = lines[i].split(",")
-            video = LibraryItem(str(currentline[0]), str(currentline[1]), int(currentline[2]), int(currentline[3]))
+            video = LibraryItem(str(currentline[0]), str(currentline[1]), int(currentline[2]), int(currentline[3]), str(currentline[4]) if len(currentline) > 4 else None)
             self.__library[str(i + 1)] = video
 
     @property
@@ -127,6 +127,13 @@ class VideoLibrary:
                         f.write(f"{value}\n")
                     else:
                         f.write(f"{value}")
+
+    def get_image_path(self, key):
+        try:
+            item = self.__library[key]
+            return item.image_path.strip()
+        except KeyError:
+            return None
             
 
 lib = VideoLibrary("Library")

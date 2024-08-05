@@ -59,7 +59,7 @@ class NoteBook(Frame):
 if __name__ == "__main__":
     Root = RootApp()
     fonts.configure()
-    Root.geometry("850x400")
+    Root.geometry("850x450")
     Root.title("Video Player")
     style = ttk.Style()
     style.configure("TNotebook.Tab", padding=[10, 5])
