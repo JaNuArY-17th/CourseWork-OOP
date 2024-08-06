@@ -64,4 +64,6 @@ if __name__ == "__main__":
     style = ttk.Style()
     style.configure("TNotebook.Tab", padding=[10, 5])
     Root.mainloop()
+
+#sdhashdawh diasd
     
