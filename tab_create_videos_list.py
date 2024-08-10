@@ -10,7 +10,7 @@ class CreateVideosList(Frame):
         Frame.__init__(self, master)
         self.__playlist =  []
         self.__playlist_name = []
-        with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'r') as f:
+        with open('playlist.txt', 'r') as f:
             lines = f.read().splitlines()
             for i in range(len(lines)):
                 if lines[i].startswith("Playlist:"):
@@ -76,8 +76,8 @@ class CreateVideosList(Frame):
             
         else:
             msb.showinfo("Playlist", "Playlist created")
-            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'a') as f:
-                if os.path.getsize("D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt") != 0: f.write("\n")
+            with open('playlist.txt', 'a') as f:
+                if os.path.getsize("playlist.txt") != 0: f.write("\n")
                 f.write(f"Playlist: {playlist_name}")
                 f.write("\n")
                 for vid in self.__playlist:

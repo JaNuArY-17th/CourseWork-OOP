@@ -5,7 +5,7 @@ class VideoLibrary:
         self.name = name
         self.__library = {}
 
-        f = open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'r')
+        f = open('library.txt', 'r')
         lines = f.readlines()
         for i in range(len(lines)):
             currentline = lines[i].split(",")
@@ -61,12 +61,12 @@ class VideoLibrary:
             item = self.__library[key]
             item.rating = rating
 
-            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'r') as f:
+            with open('library.txt', 'r') as f:
                 lines = f.readlines()
                 currentline = lines[int(key) - 1].split(',')
                 lines[int(key) - 1] = lines[int(key) - 1].replace(currentline[2], f"{str(rating)}")
 
-            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'w') as f:
+            with open('library.txt', 'w') as f:
                 f.writelines(lines)
         except KeyError:
             return
@@ -85,12 +85,12 @@ class VideoLibrary:
             item = self.__library[key]
             item.play_count += 1
 
-            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'r') as f:
+            with open('library.txt', 'r') as f:
                 lines = f.readlines()
                 currentline = lines[int(key) - 1].split(',')
                 lines[int(key) - 1] = lines[int(key) - 1].replace(currentline[3], f"{str(item.play_count)}\n")
 
-            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'w') as f:
+            with open('library.txt', 'w') as f:
                 f.writelines(lines)
         except KeyError:
             return
@@ -106,11 +106,11 @@ class VideoLibrary:
         if self.check_video(video) == 1:
             raise ValueError("Video existed")
         else:
-            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'r') as f:
+            with open('library.txt', 'r') as f:
                 lines = f.readlines()
                 self.__library[str(len(lines)+1)] = video
 
-            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'a') as f:
+            with open('library.txt', 'a') as f:
                 if not lines[-1]:
                     f.write(f"{video}")
                 else:
@@ -123,7 +123,7 @@ class VideoLibrary:
         else:
             del self.__library[key]
 
-            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\library.txt', 'w') as f:
+            with open('library.txt', 'w') as f:
                 first, *_, last = self.__library.values()
                 for key, value in self.__library.items():
                     if value != last:

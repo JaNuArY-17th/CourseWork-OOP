@@ -9,7 +9,7 @@ class EditPlayVideosList(Frame):
         Frame.__init__(self, master)
         self.__playlist =  []
         self.__playlist_names = []
-        with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'r') as f:
+        with open('playlist.txt', 'r') as f:
             lines = f.read().splitlines()
             for i in range(len(lines)):
                 if lines[i].startswith("Playlist:"):
@@ -73,7 +73,7 @@ class EditPlayVideosList(Frame):
         selected_index = self.playlist_list_txt.curselection()[0]
         playlist_name = self.__playlist_names[selected_index].strip()
 
-        with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'r') as f:
+        with open('playlist.txt', 'r') as f:
             lines = f.read().splitlines()
             for i in range(len(lines)):
                 if lines[i].startswith("Playlist:") and str(lines[i].split(": ")[1].strip()) == playlist_name:
@@ -101,12 +101,12 @@ class EditPlayVideosList(Frame):
                 self.__playlist.append(f"{key} {video.info()}")
                 self.set_text(self.videos_list_txt, f"{key} {video.info()}")
 
-                with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'r') as f:
+                with open('playlist.txt', 'r') as f:
                     lines = f.readlines()
                     for i in range(len(lines)):
                         if lines[i].startswith("Playlist:") and str(lines[i].split(": ")[1].strip()) == playlist_name:
                             lines.insert(i+1, f"{key} {lib.get_info(key).info()}"  "\n")
-                            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'w') as f:
+                            with open('playlist.txt', 'w') as f:
                                 f.writelines(lines)
                     f.close()
 
@@ -138,10 +138,10 @@ class EditPlayVideosList(Frame):
                 self.videos_list_txt.delete("1.0", tk.END)
                 self.set_text(self.videos_list_txt, "\n".join(self.__playlist))
 
-                with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'r') as f:
+                with open('playlist.txt', 'r') as f:
                     lines = f.readlines()
 
-                with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'w') as f:
+                with open('playlist.txt', 'w') as f:
                     skip = False
                     key_deleted = False
                     for line in lines:
@@ -174,10 +174,10 @@ class EditPlayVideosList(Frame):
             self.__playlist.clear()
             self.videos_list_txt.delete("1.0", tk.END)
             
-            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'r') as f:
+            with open('playlist.txt', 'r') as f:
                 lines = f.readlines()
 
-            with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'w') as f:
+            with open('playlist.txt', 'w') as f:
                 skip = False
                 for line in lines:
                     if line.startswith("Playlist:") and line.split(": ")[1].strip() == playlist_name:
@@ -199,7 +199,7 @@ class EditPlayVideosList(Frame):
 
     def refresh_playlists_clicked(self):
         self.__playlist_names.clear()
-        with open('D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\playlist.txt', 'r') as f:
+        with open('playlist.txt', 'r') as f:
             lines = f.read().splitlines()
             for i in range(len(lines)):
                 if lines[i].startswith("Playlist:"):
