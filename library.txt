@@ -1,6 +1,6 @@
-Tom and Jerry,Fred Quimby,4,47,D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\img\Tom and Jerry.png
+Tom and Jerry,Fred Quimby,5,57,D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\img\Tom and Jerry.png
 Breakfast at Tiffany's,Blake Edwards,5,10,D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\img\Breakfast at Tiffany's.jpg
-Casablanca,Michael Curtiz,2,11,D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\img\Casablanca.jpg
+Casablanca,Michael Curtiz,2,11,D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1722\img\Casablanca.jpg
 The Sound of Music,Robert Wise,1,4,D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\img\The Sound of Music.png
 Gone with the Wind,Victor Fleming,3,4,D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\img\Gone with the Wind.jpg
 Tenet,Christopher Nolan,4,1,D:\Study\Term 3\OOP\CourseWork\VideoPlayer COMP1752\img\Tenet.jpg
