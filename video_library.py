@@ -3,30 +3,32 @@ from library_item import LibraryItem
 class VideoLibrary:
     def __init__(self, name):
         self.name = name
-        self.__library = {}
+        self._library = {}
 
+    @property
+    def library(self):
+        return self._library
+
+    def import_library(self):
         f = open('library.txt', 'r')
         lines = f.readlines()
         for i in range(len(lines)):
             currentline = lines[i].split(",")
             video = LibraryItem(str(currentline[0]), str(currentline[1]), int(currentline[2]), int(currentline[3]), str(currentline[4]) if len(currentline) > 4 else None)
-            self.__library[str(i + 1)] = video
+            self._library[str(i + 1)] = video
 
-    @property
-    def library(self):
-        return self.__library
 
     def list_all(self):
         output = ""
-        for key in self.__library:
-            item = self.__library[key]
+        for key in self._library:
+            item = self._library[key]
             output += f"{key} {item.info()}\n"
         return output
 
 
     def get_info(self, key):
         try:
-            item = self.__library[key]
+            item = self._library[key]
             return item
         except KeyError:
             return None
@@ -34,7 +36,7 @@ class VideoLibrary:
 
     def get_name(self, key):
         try:
-            item = self.__library[key]
+            item = self._library[key]
             return item.name
         except KeyError:
             return None
@@ -42,7 +44,7 @@ class VideoLibrary:
 
     def get_director(self, key):
         try:
-            item = self.__library[key]
+            item = self._library[key]
             return item.director
         except KeyError:
             return None
@@ -50,7 +52,7 @@ class VideoLibrary:
 
     def get_rating(self, key):
         try:
-            item = self.__library[key]
+            item = self._library[key]
             return item.rating
         except KeyError:
             return -1
@@ -58,7 +60,7 @@ class VideoLibrary:
 
     def set_rating(self, key, rating):
         try:
-            item = self.__library[key]
+            item = self._library[key]
             item.rating = rating
 
             with open('library.txt', 'r') as f:
@@ -74,7 +76,7 @@ class VideoLibrary:
 
     def get_play_count(self, key):
         try:
-            item = self.__library[key]
+            item = self._library[key]
             return item.play_count
         except KeyError:
             return -1
@@ -82,7 +84,7 @@ class VideoLibrary:
 
     def increment_play_count(self, key):
         try:
-            item = self.__library[key]
+            item = self._library[key]
             item.play_count += 1
 
             with open('library.txt', 'r') as f:
@@ -96,8 +98,8 @@ class VideoLibrary:
             return
 
     def check_video(self, video):
-        for vid in self.__library:
-            if video.name.lower() == self.__library[vid].name.lower() and video.director.lower() == self.__library[vid].director.lower():
+        for vid in self._library:
+            if video.name.lower() == self._library[vid].name.lower() and video.director.lower() == self._library[vid].director.lower():
                 return 1
         return 0
 
@@ -108,7 +110,7 @@ class VideoLibrary:
         else:
             with open('library.txt', 'r') as f:
                 lines = f.readlines()
-                self.__library[str(len(lines)+1)] = video
+                self._library[str(len(lines)+1)] = video
 
             with open('library.txt', 'a') as f:
                 if not lines[-1]:
@@ -121,11 +123,11 @@ class VideoLibrary:
         if self.get_info(key) == None:
             raise ValueError("Video not found")
         else:
-            del self.__library[key]
+            del self._library[key]
 
             with open('library.txt', 'w') as f:
-                first, *_, last = self.__library.values()
-                for key, value in self.__library.items():
+                first, *_, last = self._library.values()
+                for key, value in self._library.items():
                     if value != last:
                         f.write(f"{value}\n")
                     else:
@@ -134,10 +136,11 @@ class VideoLibrary:
 
     def get_image_path(self, key):
         try:
-            item = self.__library[key]
+            item = self._library[key]
             return item.image_path.strip()
         except KeyError:
             return None
             
 
-lib = VideoLibrary("Library")
+lib = VideoLibrary("Videos Library")
+lib.import_library()

@@ -8,6 +8,7 @@ from tab_update_videos import UpdateVideos
 from tab_search import Search
 from tab_edit_library import EditLibrary
 from tab_edit_play_videos_list import EditPlayVideosList
+from tab_video_episodes import VideoEpisodes
 
 import subprocess
 import sys
@@ -43,6 +44,7 @@ class NoteBook(Frame):
         self.tab5 = UpdateVideos(self.notebook)
         self.tab6 = Search(self.notebook)
         self.tab7 = EditLibrary(self.notebook)
+        self.tab8 = VideoEpisodes(self.notebook)
 
         self.notebook.add(self.tab1, text="Check Videos")
         self.notebook.add(self.tab2, text="Create Videos List")
@@ -50,6 +52,7 @@ class NoteBook(Frame):
         self.notebook.add(self.tab5, text="Update Videos")
         self.notebook.add(self.tab6, text="Search")
         self.notebook.add(self.tab7, text="Edit Library")
+        self.notebook.add(self.tab8, text="Video Episodes")
 
         self.notebook.pack()
 
@@ -59,7 +62,7 @@ class NoteBook(Frame):
 if __name__ == "__main__":
     Root = RootApp()
     fonts.configure()
-    Root.geometry("850x450")
+    Root.geometry("950x450")
     Root.title("Video Player")
     style = ttk.Style()
     style.configure("TNotebook.Tab", padding=[10, 5])

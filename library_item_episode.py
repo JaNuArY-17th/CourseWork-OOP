@@ -3,7 +3,7 @@ from library_item import LibraryItem
 class LibraryItemEpisode(LibraryItem):
     def __init__(self, name, director, rating, time, episode):
         super().__init__(name, director, rating, time)
-        self.__episode = episode
+        self.episode = episode
 
     @property
     def episode(self):
@@ -15,4 +15,6 @@ class LibraryItemEpisode(LibraryItem):
             raise ValueError("Episode must be a positive number")
         self.__episode = ep
 
+    def info(self):
+        return f"{self.name} - {self.director} - Episode {self.episode}"
     

@@ -9,13 +9,6 @@ class EditPlayVideosList(Frame):
         Frame.__init__(self, master)
         self.__playlist =  []
         self.__playlist_names = []
-        with open('playlist.txt', 'r') as f:
-            lines = f.read().splitlines()
-            for i in range(len(lines)):
-                if lines[i].startswith("Playlist:"):
-                    currentline = lines[i].split(": ")
-                    name = str(currentline[1])
-                    self.__playlist_names.append(name)
 
         tk.Label(self, text="Playlists").grid(row=0, column=0)
         tk.Label(self, text="Videos List").grid(row=0, column=1, columnspan=3)
@@ -55,7 +48,9 @@ class EditPlayVideosList(Frame):
         delete_video_from_playlist_btn = tk.Button(self, text="Delete Video From Playlist", command=self.delete_video_from_playlist_clicked)
         delete_video_from_playlist_btn.grid(row=5, column=4, columnspan=2, sticky=NW, padx=10)
 
+        self.refresh_playlists_clicked()
         self.list_all_playlists()
+
 
     def set_text(self, text_area, content):
         text_area.insert(1.0, "\n")

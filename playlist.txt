@@ -2,10 +2,17 @@ Playlist: daw
 1 Tom and Jerry - Fred Quimby - ****
 1 Tom and Jerry - Fred Quimby - ****
 1 Tom and Jerry - Fred Quimby - ****
-1 Tom and Jerry - Fred Quimby - ****
 
 Playlist: wdwa
 2 Breakfast at Tiffany's - Blake Edwards - *****
 3 Casablanca - Michael Curtiz - **
 4 The Sound of Music - Robert Wise - *
 5 Gone with the Wind - Victor Fleming - ***
+
+Playlist: daws
+1 Tom and Jerry - Fred Quimby - ****
+2 Breakfast at Tiffany's - Blake Edwards - *****
+
+Playlist: dass
+1 Tom and Jerry - Fred Quimby - ****
+8 Deadpool & Wolverine - Shawn Levy - *****
