@@ -18,16 +18,14 @@ class VideoEpisodes(Frame):
         tk.Label(self, text="Episodes").grid(row=0, column=1)
 
         self.videos_list = Listbox(self, width=40, selectmode=SINGLE, exportselection=0)
-        self.videos_list.grid(row=1, column=0, padx=10, pady=10)
+        self.videos_list.grid(row=1, column=0, rowspan=5, padx=10, pady=10)
         self.videos_list.bind("<<ListboxSelect>>", self.__on_select)
 
         self.episodes_list = Listbox(self, width=20, selectmode=SINGLE, exportselection=0)
-        self.episodes_list.grid(row=1, column=1, padx=10, pady=10)
+        self.episodes_list.grid(row=1, column=1, rowspan=5, padx=10, pady=10)
 
         list_videos_btn = tk.Button(self, text="List All Videos", command=self.list_videos_clicked)
-        list_videos_btn.grid(row=2, column=0)
-
-        
+        list_videos_btn.grid(row=6, column=0)
 
         self.list_videos_clicked()
 
@@ -50,8 +48,7 @@ class VideoEpisodes(Frame):
                 if line.split(',')[0].strip() == video.strip():
                     self.episodes.append(f'Episode {line.split(',')[-1]}')
 
-        self.set_text(self.episodes_list, '\n'.join(self.episodes))                
-
+        self.set_text(self.episodes_list, '\n'.join(self.episodes))                  
 
     def list_videos_clicked(self):
         video_list = lib.list_all()
