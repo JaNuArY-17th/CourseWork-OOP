@@ -54,6 +54,7 @@ class UpdateVideos(Frame):
                 rate = int(self.input_txt_rating.get())
                 lib.set_rating(video, rate)
                 self.display_video_info(video, lib.get_name(video))
+                self.list_videos_clicked()
                 self.video_txt.config(state=DISABLED)
                 msb.showinfo("Video", "Update video")
 

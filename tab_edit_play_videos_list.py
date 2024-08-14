@@ -51,7 +51,6 @@ class EditPlayVideosList(Frame):
         self.refresh_playlists_clicked()
         self.list_all_playlists()
 
-
     def set_text(self, text_area, content):
         text_area.insert(1.0, "\n")
         text_area.insert(1.0, content)

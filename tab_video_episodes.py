@@ -29,7 +29,6 @@ class VideoEpisodes(Frame):
 
         self.list_videos_clicked()
 
-
     def set_text(self, text_area, content):
         text_area.delete(0, tk.END)
         lines = content.split('\n')

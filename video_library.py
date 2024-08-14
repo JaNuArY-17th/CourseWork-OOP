@@ -17,14 +17,12 @@ class VideoLibrary:
             video = LibraryItem(str(currentline[0]), str(currentline[1]), int(currentline[2]), int(currentline[3]), str(currentline[4]) if len(currentline) > 4 else None)
             self._library[str(i + 1)] = video
 
-
     def list_all(self):
         output = ""
         for key in self._library:
             item = self._library[key]
             output += f"{key} {item.info()}\n"
         return output
-
 
     def get_info(self, key):
         try:
@@ -33,14 +31,12 @@ class VideoLibrary:
         except KeyError:
             return None
 
-
     def get_name(self, key):
         try:
             item = self._library[key]
             return item.name
         except KeyError:
             return None
-
 
     def get_director(self, key):
         try:
@@ -49,14 +45,12 @@ class VideoLibrary:
         except KeyError:
             return None
 
-
     def get_rating(self, key):
         try:
             item = self._library[key]
             return item.rating
         except KeyError:
             return -1
-
 
     def set_rating(self, key, rating):
         try:
@@ -73,14 +67,12 @@ class VideoLibrary:
         except KeyError:
             return
 
-
     def get_play_count(self, key):
         try:
             item = self._library[key]
             return item.play_count
         except KeyError:
             return -1
-
 
     def increment_play_count(self, key):
         try:
@@ -132,7 +124,6 @@ class VideoLibrary:
                         f.write(f"{value}\n")
                     else:
                         f.write(f"{value}")
-
 
     def get_image_path(self, key):
         try:
